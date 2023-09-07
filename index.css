@@ -1,3 +1,21 @@
-#parent{
-    color: red;
+.header{
+    display: flex;
+    justify-content:space-between;
+    border: 1px solid orange;
+}
+.logo{
+    width: 130px;
+}
+.nav-items{
+    padding: 10px;
+}
+.nav-items>ul{
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+}
+.nav-items>ul>li{
+    padding: 10px;
+    margin: 10px;
+
 }

@@ -1,24 +1,44 @@
-/*const heading= React.createElement("h1",{id:"heading"},"hello world from react.");
+import React from "react";
+import ReactDOM  from "react-dom/client";
+const Header=()=>{
+    return(
+    <div className="header">
+        <div className="logo-container">
+        <img className="logo" src="https://t3.ftcdn.net/jpg/02/86/12/22/360_F_286122238_zWzctXPgodrwNOnkBXpjzuO8NeS0T0oJ.jpg"/>
+        </div>
+        <div className="nav-items">
+    <ul>
+        <li>Home</li>
+        <li>About us</li>
+        <li>Contact</li>
+        <li>Cart</li>
+    </ul>
+        </div>
+    </div>)
+}
+const RestaurantCard=()=>{
+    return(<div className="res-card">
+        <h3>Bawarchi Foods</h3>
+    </div>)
+
+}
+
+const Body=()=>{
+    return(
+    <div className="body">
+        <div className="search">Search</div>
+        <div className="res-container">
+            <RestaurantCard/>
+        </div>
+    </div>)
+}
+const AppLayout=()=>{
+    return(<div className="app">
+        <Header/>
+        <Body/>
+    </div>);
+}
 const root=ReactDOM.createRoot(document.getElementById("root"))
-root.render(heading)*/
-
-
-const parent=React.createElement("div",{id:"parent"},
-[React.createElement("div",{id:"child"},[
-    React.createElement("h1",{},"I am h1 tag"),
-    React.createElement("h2",{},"I am h2 tag")
-    ]),
-    React.createElement("div",{id:"child2"},[
-        React.createElement("h1",{},"I am h1 tag from c2"),
-        React.createElement("h2",{},"I am h2 tag from c2")
-        ]),
-    ]);
-
-const root=ReactDOM.createRoot(document.getElementById('root'))
-root.render(parent)
-
-console.log(parent)
-
-
+root.render(<AppLayout/>);
 
 
