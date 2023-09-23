@@ -62,3 +62,7 @@
 .filter{
     display: flex;
 }
+.card-user{
+    padding: 10px;
+    border: 1px solid black;
+}
