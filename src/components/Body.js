@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
@@ -21,10 +22,12 @@ const Body = () => {
 
         //console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
         setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
+    const onlineStatus=useOnlineStatus();
+    if(onlineStatus===false) return(<h1>you are offline!! please check your connectivity and try again...</h1>)
 
-    return (listOfRestaurants.length === 0) ? <Shimmer /> : (
+    return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <>
             <div className="body">
                 <div className="filter">
@@ -46,7 +49,7 @@ const Body = () => {
                     <button className="filter-btn" onClick={() => {
                         const filteredList = listOfRestaurants.filter(
                             (res) => {
-                                return res.info.avgRating>4.5;
+                                return res.info.avgRating>4.2;
                             });
                         console.log(filteredRestaurant);
                         setFilteredRestaurant(filteredList);
