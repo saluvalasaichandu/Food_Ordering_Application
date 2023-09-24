@@ -30,14 +30,15 @@ const Body = () => {
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <>
             <div className="body">
-                <div className="filter">
-                    <div className="search">
-                        <input type="text" className="search-box" value={searchText} onChange={
+                <div className="filter flex">
+                    <div className="search m-4 p-4">
+                        <input type="text" className="border border-solid border-black" value={searchText} onChange={
                             (e) => {
                                 setSearchtext(e.target.value);
                             }
                         } />
-                        <button className="search-btn" onClick={() => {
+                       
+                        <button className="m-4 px-4 py-2 bg-orange-400 rounded-lg" onClick={() => {
                             const filteredRestaurant = listOfRestaurants.filter((res) => 
                                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
                             );
@@ -46,7 +47,8 @@ const Body = () => {
                         }
                         }>Search</button>
                     </div>
-                    <button className="filter-btn" onClick={() => {
+                    <div className= "search m-4 p-4 flex items-center">
+                    <button className="px-4 py-2 bg-gray-300 rounded-lg" onClick={() => {
                         const filteredList = listOfRestaurants.filter(
                             (res) => {
                                 return res.info.avgRating>4.2;
@@ -56,8 +58,10 @@ const Body = () => {
                     }}>
                         Top Rated restaurants
                     </button>
+                    </div>
+                    
                 </div>
-                <div className="res-container">
+                <div className="flex flex-wrap ">
                     {/* RestaurantCard goes here */}
                     {
                         filteredRestaurant.map((restaurant) => (
