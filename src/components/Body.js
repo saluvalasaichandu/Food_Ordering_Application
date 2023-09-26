@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withPromotedLabel } from "./RestaurantCard";
 
 const Body = () => {
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [filteredRestaurant,setFilteredRestaurant] = useState([]);
     const [searchText,setSearchtext] = useState("");
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     useEffect(() => {
         fetchData();
@@ -68,9 +70,11 @@ const Body = () => {
                           <Link 
                           key={restaurant?.info?.id}
                           to={"/restaurants/" + restaurant?.info?.id}>
-                            <RestaurantCard  resData={...restaurant} /></Link>  
-                        ))
-                    }
+                            {restaurant.info.aggregatedDiscountInfoV3?(
+              <RestaurantCardPromoted resData={...restaurant} />
+            ) : (<RestaurantCard  resData={...restaurant} />)}
+                            </Link>  
+                        ))}
                 </div>
             </div>
         </>
