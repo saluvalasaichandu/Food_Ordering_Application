@@ -1,10 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { withPromotedLabel } from "./RestaurantCard";
-
+import UserContext from "../utils/UserContext";
 const Body = () => {
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [filteredRestaurant,setFilteredRestaurant] = useState([]);
@@ -22,13 +22,15 @@ const Body = () => {
 
         console.log(json);
 
-        //console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants)
+        //console.log(json.data.cards[2].card.card.gridElements.infoWithStyle.Srestaurants)
         setListOfRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     const onlineStatus=useOnlineStatus();
     if(onlineStatus===false) return(<h1>you are offline!! please check your connectivity and try again...</h1>)
 
+    const { loggedInUser, setUserName } = useContext(UserContext);
+    
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <>
             <div className="body">
@@ -60,6 +62,10 @@ const Body = () => {
                     }}>
                         Top Rated restaurants
                     </button>
+                    </div>
+                    <div className= "search m-4 p-4 flex items-center">
+                        <label>User name: </label>
+                        <input className="border border-black mx-2" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}></input>
                     </div>
                     
                 </div>
