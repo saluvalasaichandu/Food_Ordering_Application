@@ -13,8 +13,8 @@ class About extends React.Component{
     render(){
         //console.log("parent render")
         return(
-            <div>
-                <h1>About us</h1>
+            <div className="py-2 px-8 m-6 text-lg">
+                <h1 className='font-bold'>About us:👁‍🗨</h1>
                 <div>LoggedIn user<UserContext.Consumer>{({loggedInUser})=><h1 className='font-bold'>{loggedInUser}</h1>}</UserContext.Consumer></div>
                 <h2>App created by Saichandu</h2>
                 {/*<User name={"Saichandu (function)"}/>*/}

@@ -21,7 +21,7 @@ const Header=()=>{
     console.log(cartItems)
 
     return(
-    <div className="flex  justify-between bg-gray-100 lg:bg-green-100">
+    <div className="flex  justify-between bg-gray-100 lg:bg-green-100 shadow-lg cursor-pointer">
         <div className="logo-container">
         <img className="w-36" src={LOGO_URL}/>
         </div>
@@ -32,7 +32,7 @@ const Header=()=>{
         <li className="px-4" > <Link to="/about">About us </Link></li>
         <li className="px-4"> <Link to="/contact">Contact</Link></li>
         <li className="px-4"><Link to="/Grocery">Grocery</Link></li>
-        <li className="px-4 font-bold text-xl"><Link to="/Cart">Cart{cartItems.length}-Items </Link></li>
+        <li className="px-4 font-bold"><Link to="/Cart">Cart{cartItems.length}-Items </Link></li>
         <button className="login" onClick={()=>
         {btnreact==="login" ? setbtnreact("logout"):setbtnreact("login")}
         }>{btnreact}</button>
