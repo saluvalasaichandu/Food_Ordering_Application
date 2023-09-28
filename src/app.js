@@ -1,4 +1,5 @@
-import React, { lazy,Suspense, useEffect, useState} from "react";
+import React from "react";
+import { lazy,Suspense, useEffect, useState} from "react";
 import UserContext from "./utils/UserContext";
 import ReactDOM  from "react-dom/client";
 import Header from "./components/Header";
@@ -9,7 +10,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 //import Grocery from "./components/Grocery";
-
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 
 const Grocery=lazy(()=> import("./components/Grocery"));
@@ -24,12 +26,14 @@ const AppLayout=()=>{
         setUserName(data.name)
     },[]);
     return(
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
     <div className="app">
         <Header/>
         <Outlet/>
     </div>
     </UserContext.Provider>
+    </Provider>
     );
 }
 const appRouter=createBrowserRouter([

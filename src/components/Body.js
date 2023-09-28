@@ -34,7 +34,7 @@ const Body = () => {
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <>
             <div className="body">
-                <div className="filter flex">
+                <div className="filter flex px-16 mx-8 ">
                     <div className="search m-4 p-4">
                         <input type="text" className="border border-solid border-black" value={searchText} onChange={
                             (e) => {
@@ -69,7 +69,7 @@ const Body = () => {
                     </div>
                     
                 </div>
-                <div className="flex flex-wrap ">
+                <div className="flex flex-wrap px-16 mx-8">
                     {/* RestaurantCard goes here */}
                     {
                         filteredRestaurant.map((restaurant) => (

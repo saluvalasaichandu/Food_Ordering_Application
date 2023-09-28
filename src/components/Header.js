@@ -1,8 +1,11 @@
+
 import { useState,useEffect,useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+
 const Header=()=>{
     const [btnreact,setbtnreact]=useState("login");
 
@@ -12,6 +15,11 @@ const Header=()=>{
     useEffect(()=>{
         //console.log("use effect called")
     },[]);
+
+    // subscribing the store by using selector by using this we can read the items present in cart.
+    const cartItems= useSelector((store)=>store.cart.items);
+    console.log(cartItems)
+
     return(
     <div className="flex  justify-between bg-gray-100 lg:bg-green-100">
         <div className="logo-container">
@@ -24,7 +32,7 @@ const Header=()=>{
         <li className="px-4" > <Link to="/about">About us </Link></li>
         <li className="px-4"> <Link to="/contact">Contact</Link></li>
         <li className="px-4"><Link to="/Grocery">Grocery</Link></li>
-        <li className="px-4">Cart</li>
+        <li className="px-4 font-bold text-xl">Cart{cartItems.length}-Items</li>
         <button className="login" onClick={()=>
         {btnreact==="login" ? setbtnreact("logout"):setbtnreact("login")}
         }>{btnreact}</button>
