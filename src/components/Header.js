@@ -32,7 +32,7 @@ const Header=()=>{
         <li className="px-4" > <Link to="/about">About us </Link></li>
         <li className="px-4"> <Link to="/contact">Contact</Link></li>
         <li className="px-4"><Link to="/Grocery">Grocery</Link></li>
-        <li className="px-4 font-bold text-xl">Cart{cartItems.length}-Items</li>
+        <li className="px-4 font-bold text-xl"><Link to="/Cart">Cart{cartItems.length}-Items </Link></li>
         <button className="login" onClick={()=>
         {btnreact==="login" ? setbtnreact("logout"):setbtnreact("login")}
         }>{btnreact}</button>

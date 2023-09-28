@@ -1,3 +1,4 @@
+import React from "react";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect,useContext} from "react";
 import Shimmer from "./Shimmer";
@@ -31,7 +32,7 @@ const Body = () => {
 
     const { loggedInUser, setUserName } = useContext(UserContext);
     
-    return listOfRestaurants.length === 0 ? <Shimmer /> : (
+    return listOfRestaurants.length===0 ? <Shimmer /> : (
         <>
             <div className="body">
                 <div className="filter flex px-16 mx-8 ">
